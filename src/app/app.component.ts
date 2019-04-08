@@ -25,12 +25,64 @@ export class AppComponent {
     };
     this.pessoas.push(pessoa);
     this.nome = null,
-    this.sexo = null,
-    this.idade = null,
-    this.cidade = null
+    this.idade = null
     }
 
   pessoa_mais_velha(){
-    
+    var maior_idade = 0;
+    for(let pessoa of this.pessoas){
+      if(pessoa.idade > maior_idade){
+        maior_idade = pessoa
+      }
+    return maior_idade
+    }
   }
-};
+
+  pessoa_mais_nova(){
+    var menor_idade = 9999999;
+    var pessoa_mais_velha;
+    for(let pessoa of this.pessoas){
+      if(pessoa.idade > menor_idade){
+        menor_idade = pessoa
+        pessoa_mais_velha = pessoa.nome
+      }
+    return pessoa_mais_velha
+    }
+  }
+
+  media_idade_mulheres(){
+    var soma = 0;
+    var total = 0;
+    for(let pessoa of this.pessoas){
+      if(pessoa.sexoSelecionado > 'Feminino'){
+        soma += pessoa.idade
+        total += 1
+      }
+    return soma/total
+    }
+  }
+
+  media_idade_homens(){
+    var soma = 0;
+    var total = 0;
+    for(let pessoa of this.pessoas){
+      if(pessoa.sexoSelecionado > 'Masculino'){
+        soma += pessoa.idade
+        total += 1
+      }
+    return soma/total
+    }
+  }
+
+  media_idade_por_cidade(){
+    var soma = 0;
+    var total = 0;
+    for(let pessoa of this.pessoas){
+      if(pessoa.sexoSelecionado > 'Masculino'){
+        soma += pessoa.idade
+        total += 1
+      }
+    return soma/total
+    }
+  }
+}
