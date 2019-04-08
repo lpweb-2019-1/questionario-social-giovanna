@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NgModuleFactory } from '@angular/core/src/render3';
 
 @Component({
   selector: 'app-root',
@@ -30,59 +31,78 @@ export class AppComponent {
 
   pessoa_mais_velha(){
     var maior_idade = 0;
+    var pessoa_mais_velha;
     for(let pessoa of this.pessoas){
       if(pessoa.idade > maior_idade){
-        maior_idade = pessoa
+        maior_idade = pessoa.idade
+        pessoa_mais_velha = pessoa.nome
       }
-    return maior_idade
     }
+    return pessoa_mais_velha
   }
 
   pessoa_mais_nova(){
     var menor_idade = 9999999;
-    var pessoa_mais_velha;
+    var pessoa_mais_nova;
     for(let pessoa of this.pessoas){
-      if(pessoa.idade > menor_idade){
-        menor_idade = pessoa
-        pessoa_mais_velha = pessoa.nome
+      if(pessoa.idade < menor_idade){
+        menor_idade = pessoa.idade
+        pessoa_mais_nova = pessoa.nome
       }
-    return pessoa_mais_velha
     }
+    return pessoa_mais_nova
   }
 
   media_idade_mulheres(){
     var soma = 0;
     var total = 0;
     for(let pessoa of this.pessoas){
-      if(pessoa.sexoSelecionado > 'Feminino'){
+      if(pessoa.sexoSelecionado == 'Feminino'){
         soma += pessoa.idade
         total += 1
       }
-    return soma/total
     }
+    return soma/total
   }
 
   media_idade_homens(){
     var soma = 0;
     var total = 0;
     for(let pessoa of this.pessoas){
-      if(pessoa.sexoSelecionado > 'Masculino'){
+      if(pessoa.sexoSelecionado == 'Masculino'){
         soma += pessoa.idade
         total += 1
       }
-    return soma/total
     }
+    return soma/total
   }
 
-  media_idade_por_cidade(){
+  media_idade_por_cidade(cidade){
     var soma = 0;
     var total = 0;
     for(let pessoa of this.pessoas){
-      if(pessoa.sexoSelecionado > 'Masculino'){
+      if(pessoa.cidadeSelecionada == cidade){
         soma += pessoa.idade
         total += 1
       }
-    return soma/total
     }
+    return soma/total
+  }
+
+  porc_sexo_por_cidade(cidade){
+    var fem = 0;
+    var masc = 0;
+    var total = 0;
+    for(let pessoa of this.pessoas){
+      if(pessoa.cidadeSelecionada == cidade){
+        if(pessoa.sexoSelecionado == 'F'){
+          fem += 1
+        }else{
+          masc += 1
+        }
+        total += 1
+      }
+    }
+    return 'Feminino:'+fem/total*100+'%'+' Masculino:'+masc/total*100+'%'
   }
 }
