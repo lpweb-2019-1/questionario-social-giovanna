@@ -16,7 +16,7 @@
 
           <select name="sexo" [(ngModel)]="sexoSelecionado">
               <option value="" disabled>Selecione seu sexo</option>
-              <option *ngFor="let sexo of sexo" [ngValue]="sexoSelecionado">
+              <option *ngFor="let sexo of sexo" [ngValue]="sexoSelecionado" required>
                 {{ sexo }}
               </option>
             </select> 
@@ -32,7 +32,7 @@
 
           <select name="cidade" [(ngModel)]="cidadeSelecionada">
               <option value="" disabled>Selecione seu sexo</option>
-              <option *ngFor="let cidade of cidade" [ngValue]="cidadeSelecionada">
+              <option *ngFor="let cidade of cidade" [ngValue]="cidadeSelecionada" required>
                 {{ cidade }}
               </option>
             </select> 
@@ -58,7 +58,7 @@
           Média de idade por cidade
         <ul> 
           <li *ngFor = 'let x of cidade'>
-            {{x}}: {{media_idade_por_cidade(x)}} 
+            {{x}} - {{media_idade_por_cidade(x)}} 
           </li>
         </ul>
       </div>
@@ -66,7 +66,7 @@
           Porcentagem de pessoas por sexo em cada cidade
         <ul>
           <li *ngFor = 'let x of cidade'>
-            {{x}}: {{porc_sexo_por_cidade(x)}} 
+            {{x}} - {{porc_sexo_por_cidade(x)}} 
           </li>
         </ul>
       </div>
