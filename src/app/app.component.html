@@ -32,7 +32,7 @@
 
           <select name="cidade" [(ngModel)]="cidadeSelecionada">
               <option value="" disabled>Selecione seu sexo</option>
-              <option *ngFor="let cidade of cidade" [ngValue]="cidadeSelecionada" required>
+              <option *ngFor="let cidade of Pessoas.cidade" [ngValue]="cidadeSelecionada" required>
                 {{ cidade }}
               </option>
             </select> 
