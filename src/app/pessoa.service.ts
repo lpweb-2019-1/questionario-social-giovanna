@@ -79,7 +79,7 @@ pessoas = [];
     var total = 0;
     let pessoas = JSON.parse(localStorage.getItem("pessoas"))
     for(let pessoa of pessoas){
-      if(pessoa.cidades == cidade){
+      if(pessoa.cidade == cidade){
         soma += pessoa.idade
         total += 1
       }
@@ -93,7 +93,7 @@ pessoas = [];
     var total = 0;
     let pessoas = JSON.parse(localStorage.getItem("pessoas"))
     for(let pessoa of pessoas){
-      if(pessoa.cidades == cidade){
+      if(pessoa.cidade == cidade){
         if(pessoa.sexo == 'F'){
           fem += 1
         }else{

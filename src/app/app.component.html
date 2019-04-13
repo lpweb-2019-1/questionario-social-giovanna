@@ -42,8 +42,8 @@
       </div>
 
       <div>
-          <button type="submit">Salvar</button>
-          <button type="reset" formnovalidate>Limpar</button>
+          <button type="submit" class="btn btn-primary" [disabled]="!cadastro.form.valid">Salvar</button>
+          <button type="reset" class="btn btn-secondary" formnovalidate>Limpar</button>
       </div>
     </form>
 
@@ -63,7 +63,7 @@
       <div>
           Média de idade por cidade
         <ul> 
-          <li *ngFor = 'let x of cidade'>
+          <li *ngFor = 'let x of cidades'>
             {{x}} - {{media_idade_por_cidade(x)}} 
           </li>
         </ul>
@@ -71,7 +71,7 @@
       <div>
           Porcentagem de pessoas por sexo em cada cidade
         <ul>
-          <li *ngFor = 'let x of cidade'>
+          <li *ngFor = 'let x of cidades'>
             {{x}} - {{porc_sexo_por_cidade(x)}} 
           </li>
         </ul>
