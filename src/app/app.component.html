@@ -10,11 +10,12 @@
     <form #cadastro="ngForm" (submit)="salvar()">
 
       <div class="form-group">
-        <label for="nome">Nome</label>
+        <label for="nome">Nome</label><br>
         <input type="text" id="nome" name="nome" [(ngModel)]="nome" required>
       </div>
 
       <div class="form-group">
+          <label for="nome">Sexo</label><br>
         <div class="form-check form-check-inline">
           <label class="form-check-label" for="sexo">Masculino&nbsp;</label>
           <input class="form-check-input" type="radio" name="sexo"  value="masculino" [(ngModel)]="sexo" required>
@@ -26,12 +27,12 @@
       </div>
 
       <div class="form-group">
-        <label for="nome">Idade</label>
+        <label for="nome">Idade</label><br>
         <input type="number" id="idade" name="idade" [(ngModel)]="idade" required>
       </div>
 
       <div class="form-group">
-        <label for="nome">Cidade</label>
+        <label for="nome">Cidade</label><br>
         <select name="cidade" [(ngModel)]="cidade" required>
             <option disabled>Selecione sua cidade</option>
             <option *ngFor="let cidade of cidades" [ngValue]="cidade">
