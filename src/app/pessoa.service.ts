@@ -7,6 +7,7 @@ import {AppComponent} from './app.component';
 export class PessoaService {
 pessoas = [];
   constructor() {this.pessoas = []}
+  
   salvar(nome: string, idade: number, sexo: string, cidade: string) {
     const pessoa = {
       nome,
