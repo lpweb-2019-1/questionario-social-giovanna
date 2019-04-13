@@ -1,8 +1,10 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div>
-  <h1>
+<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:700" rel="stylesheet">
+
+<section>
+  <h2>
     Questionário Social
-  </h1>
+  </h2>
   
   <div>
     <form #cadastro="ngForm" (submit)="salvar()">
@@ -13,14 +15,14 @@
       </div>
 
       <div class="form-group">
-
-          <select name="sexo" [(ngModel)]="sexoSelecionado">
-              <option value="" disabled>Selecione seu sexo</option>
-              <option *ngFor="let sexo of sexo" [ngValue]="sexoSelecionado" required>
-                {{ sexo }}
-              </option>
-            </select> 
-          
+        <div class="form-check form-check-inline">
+          <label class="form-check-label" for="sexo">Masculino&nbsp;</label>
+          <input class="form-check-input" type="radio" name="sexo"  value="masculino" [(ngModel)]="sexo" required>
+        </div>
+        <div class="form-check form-check-inline">
+          <label class="form-check-label" for="sexo">Feminino&nbsp;</label>
+          <input class="form-check-input" type="radio" name="sexo" value="feminino"  [(ngModel)]="sexo" required>
+        </div>  
       </div>
 
       <div class="form-group">
@@ -29,19 +31,23 @@
       </div>
 
       <div class="form-group">
-
-          <select name="cidade" [(ngModel)]="cidadeSelecionada">
-              <option value="" disabled>Selecione seu sexo</option>
-              <option *ngFor="let cidade of Pessoas.cidade" [ngValue]="cidadeSelecionada" required>
-                {{ cidade }}
-              </option>
-            </select> 
+        <label for="nome">Cidade</label>
+        <select name="cidade" [(ngModel)]="cidade" required>
+            <option disabled>Selecione sua cidade</option>
+            <option *ngFor="let cidade of cidades" [ngValue]="cidade">
+              {{ cidade }}
+            </option>
+          </select> 
+        
       </div>
+
       <div>
           <button type="submit">Salvar</button>
           <button type="reset" formnovalidate>Limpar</button>
       </div>
     </form>
+
+
       <div>
           Pessoa mais velha: {{pessoa_mais_velha()}}
       </div>
@@ -71,7 +77,6 @@
         </ul>
       </div>
     
-      
   </div>
-</div>
+</section>
 

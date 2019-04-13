@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
+import {AppComponent} from './app.component';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root'  
 })
 export class PessoaService {
 pessoas = [];
-cidades = ['Palmas','Paraíso','Porto Nacional','Brasília','Goiânia'];
-  constructor() { }
+  constructor() {this.pessoas = []}
   salvar(nome: string, idade: number, sexo: string, cidade: string) {
     const pessoa = {
       nome,
@@ -19,7 +19,7 @@ cidades = ['Palmas','Paraíso','Porto Nacional','Brasília','Goiânia'];
   };
 
   cidade(){
-    return this.cidades
+    return this.cidade
   }
 
   pessoa_mais_velha(){
@@ -53,7 +53,7 @@ cidades = ['Palmas','Paraíso','Porto Nacional','Brasília','Goiânia'];
     var total = 0;
     let pessoas = JSON.parse(localStorage.getItem("pessoas"));
     for(let pessoa of pessoas){
-      if(pessoa.sexoSelecionado == 'Feminino'){
+      if(pessoa.sexo == 'Feminino'){
         soma += pessoa.idade
         total += 1
       }
@@ -66,7 +66,7 @@ cidades = ['Palmas','Paraíso','Porto Nacional','Brasília','Goiânia'];
     var total = 0;
     let pessoas = JSON.parse(localStorage.getItem("pessoas"))
     for(let pessoa of pessoas){
-      if(pessoa.sexoSelecionado == 'Masculino'){
+      if(pessoa.sexo == 'Masculino'){
         soma += pessoa.idade
         total += 1
       }
@@ -79,7 +79,7 @@ cidades = ['Palmas','Paraíso','Porto Nacional','Brasília','Goiânia'];
     var total = 0;
     let pessoas = JSON.parse(localStorage.getItem("pessoas"))
     for(let pessoa of pessoas){
-      if(pessoa.cidadeSelecionada == cidade){
+      if(pessoa.cidades == cidade){
         soma += pessoa.idade
         total += 1
       }
@@ -93,8 +93,8 @@ cidades = ['Palmas','Paraíso','Porto Nacional','Brasília','Goiânia'];
     var total = 0;
     let pessoas = JSON.parse(localStorage.getItem("pessoas"))
     for(let pessoa of pessoas){
-      if(pessoa.cidadeSelecionada == cidade){
-        if(pessoa.sexoSelecionado == 'F'){
+      if(pessoa.cidades == cidade){
+        if(pessoa.sexo == 'F'){
           fem += 1
         }else{
           masc += 1

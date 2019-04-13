@@ -12,13 +12,11 @@ export class AppComponent {
   constructor(private Pessoas : PessoaService){
 
   }
-  pessoas = [];
   nome = null;
-  sexo = ['Feminino',
-    'Masculino'];
-  sexoSelecionado = null;
+  sexo = null;
   idade = null;
-  cidadeSelecionada = null;
+  cidade = null; 
+  cidades = ['Palmas','Paraíso','Porto Nacional','Brasília','Goiânia'];
 
   salvar(form) {
      this.Pessoas.salvar(this.nome, this.sexo, this.idade, this.cidade);
