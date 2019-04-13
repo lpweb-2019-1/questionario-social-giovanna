@@ -33,13 +33,12 @@
 
       <div class="form-group">
         <label for="nome">Cidade</label><br>
-        <select name="cidade" [(ngModel)]="cidade" required>
+        <select name="cidade" [(ngModel)]="cidade">
             <option disabled>Selecione sua cidade</option>
-            <option *ngFor="let cidade of cidades" [ngValue]="cidade">
+            <option *ngFor="let cidade of cidades" [ngValue]="cidade" required>
               {{ cidade }}
             </option>
           </select> 
-        
       </div>
 
       <div>
