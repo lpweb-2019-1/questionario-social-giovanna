@@ -5,7 +5,7 @@ import {AppComponent} from './app.component';
   providedIn: 'root'  
 })
 export class PessoaService {
-pessoas = [];
+  pessoas = [];
   constructor() {this.pessoas = []}
   
   salvar(nome: string, idade: number, sexo: string, cidade: string) {
