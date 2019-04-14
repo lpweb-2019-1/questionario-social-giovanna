@@ -1,45 +1,102 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div>
-  <h1>
-    Questionário Social
-  </h1>
-  
-  <div>
-    <form #cadastro="ngForm" (submit)="salvar()">
+<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:700" rel="stylesheet">
 
-      <div class="form-group">
-        <label for="nome">Nome</label>
-        <input type="text" id="nome" name="nome" [(ngModel)]="nome" required>
-      </div>
 
-      <div class="form-group">
+<div class="row">
+  <div class="col-3 section">
+    <h2>
+      Questionário Social
+    </h2>
+    
+    <div>
+      <form #cadastro="ngForm" (submit)="salvar()">
 
-          <select name="sexo" [(ngModel)]="sexoSelecionado">
-              <option value="" disabled>Selecione seu sexo</option>
-              <option *ngFor="let sexo of sexo" [ngValue]="sexoSelecionado">
-                {{ sexo }}
-              </option>
-            </select> 
-          
-      </div>
+        <div class="form-group">
+          <label for="nome">Nome</label><br>
+          <input type="text" id="nome" name="nome" [(ngModel)]="nome" required>
+        </div>
 
-      <div class="form-group">
-        <label for="nome">Idade</label>
-        <input type="number" id="idade" name="idade" [(ngModel)]="idade" required>
-      </div>
+        <div class="form-group">
+            <label for="nome">Sexo</label><br>
+          <div class="form-check form-check-inline">
+            <label class="form-check-label mr-1" for="sexo">Feminino</label>
+            <input class="form-check-input" type="radio" name="sexo"  value="feminino" [(ngModel)]="sexo" required>
+          </div>
+          <div class="form-check form-check-inline">
+            <label class="form-check-label mr-1" for="sexo">Masculino</label>
+            <input class="form-check-input" type="radio" name="sexo" value="masculino"  [(ngModel)]="sexo" required>
+          </div>  
+        </div>
 
-      <div class="form-group">
+        <div class="form-group">
+          <label for="nome">Idade</label><br>
+          <input type="number" id="idade" name="idade" [(ngModel)]="idade" required>
+        </div>
 
-          <select name="cidade" [(ngModel)]="cidadeSelecionada">
-              <option value="" disabled>Selecione seu sexo</option>
-              <option *ngFor="let cidade of cidade" [ngValue]="cidadeSelecionada">
+        <div class="form-group">
+          <label for="nome">Cidade</label><br>
+          <select name="cidade" [(ngModel)]="cidade" required>
+              <option disabled>Selecione sua cidade</option>
+              <option *ngFor="let cidade of cidades" [ngValue]="cidade">
                 {{ cidade }}
               </option>
             </select> 
-          
-      </div>
+        </div>
 
-    </form>
+        <div>
+            <button type="submit" class="btn btn-primary" [disabled]="!cadastro.form.valid">Salvar</button>
+            <button type="reset" class="btn btn-secondary" formnovalidate>Limpar</button>
+        </div>
+      </form>
+    </div>
   </div>
-</div>
+
+  <div class="col section">
+    <table>
+      <th>
+        Pessoa mais velha
+      </th>
+      <th>
+        Pessoa mais nova
+      </th>
+      <th>
+        Média de idade entre as mulheres
+      </th>
+      <th>
+        Média de idade entre os homens
+      </th>
+      <tr>
+        <td>
+            {{Pessoas.pessoa_mais_velha()}}
+        </td>
+        <td>
+            {{Pessoas.pessoa_mais_nova()}}
+        </td>
+        <td>
+            {{Pessoas.media_idade_mulheres()}} anos
+        </td>
+        <td>
+            {{Pessoas.media_idade_homens()}} anos
+        </td>
+      </tr>
+    </table>
+
+    <table>
+      <th>
+        Cidades
+      </th>
+      <th>
+        Média de idade por cidade
+      </th>
+      <th>
+        Porcentagem de sexo por cidade
+      </th>
+      <tr *ngFor = 'let x of cidades'>
+        <td>{{x}}</td>
+        <td>{{Pessoas.media_idade_por_cidade(x)}}</td>
+        <td>{{Pessoas.porc_sexo_por_cidade(x)}}</td>
+      </tr>
+    </table>
+  </div>
+</div> 
 

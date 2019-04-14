@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {PessoaService} from './pessoa.service'
 
 @Component({
   selector: 'app-root',
@@ -6,31 +7,22 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  pessoas = [];
   nome = null;
-  sexo = ['Feminino',
-    'Masculino'];
-  sexoSelecionado = null;
+  sexo = null;
   idade = null;
-  cidade = ['Palmas','Paraíso','Porto Nacional','Brasília','Goiânia']
-  cidadeSelecionada = null;
+  cidade = null; 
+  cidades = ['Palmas','Paraíso','Porto Nacional','Brasília','Goiânia'];
+
+  constructor(private Pessoas : PessoaService){}
 
   salvar() {
-      const pessoa = {
-        id: this.pessoas.length ,
-        nome: this.nome ,
-        sexo: this.sexoSelecionado,
-        idade: this.idade,
-        cidade: this.cidadeSelecionada,
-    };
-    this.pessoas.push(pessoa);
-    this.nome = null,
-    this.sexo = null,
-    this.idade = null,
-    this.cidade = null
+     this.Pessoas.salvar(this.nome, this.sexo, this.idade, this.cidade);
+
+    this.nome = null;
+    this.sexo = null;
+    this.idade = null;
+    this.cidade = null;
     }
 
-  pessoa_mais_velha(){
-    
-  }
-};
+  
+}
