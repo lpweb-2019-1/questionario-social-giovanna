@@ -59,6 +59,9 @@ export class PessoaService {
         total += 1
       }
     }
+    if (soma/total == null){
+      return 0
+    }
     return soma/total
   }
 
