@@ -51,22 +51,22 @@
 
   <section>
       <div>
-          Pessoa mais velha: {{pessoa_mais_velha()}}
+          Pessoa mais velha: {{Pessoas.pessoa_mais_velha()}}
       </div>
       <div>
-        Pessoa mais nova: {{pessoa_mais_nova()}}
+        Pessoa mais nova: {{Pessoas.pessoa_mais_nova()}}
       </div>
       <div>
-        Média de idade entre as mulheres: {{media_idade_mulheres()}}
+        Média de idade entre as mulheres: {{Pessoas.media_idade_mulheres()}}
       </div>
       <div>
-        Média de idade entre os homens: {{media_idade_homens()}}
+        Média de idade entre os homens: {{Pessoas.media_idade_homens()}}
       </div>
       <div>
           Média de idade por cidade
         <ul> 
           <li *ngFor = 'let x of cidades'>
-            {{x}} - {{media_idade_por_cidade(x)}} 
+            {{x}} - {{Pessoas.media_idade_por_cidade(x)}} 
           </li>
         </ul>
       </div>
@@ -74,7 +74,7 @@
           Porcentagem de pessoas por sexo em cada cidade
         <ul>
           <li *ngFor = 'let x of cidades'>
-            {{x}} - {{porc_sexo_por_cidade(x)}} 
+            {{x}} - {{Pessoas.porc_sexo_por_cidade(x)}} 
           </li>
         </ul>
       </div>
