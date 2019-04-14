@@ -8,7 +8,7 @@ export class PessoaService {
   
   constructor() {}
   
-  salvar(nome: string, idade: number, sexo: string, cidade: string) {
+  salvar(nome: string, sexo: string, idade: number, cidade: string) {
     const pessoa = {
       nome,
       sexo,
@@ -18,10 +18,6 @@ export class PessoaService {
   this.pessoas.push(pessoa);
   localStorage.setItem("pessoas", JSON.stringify(this.pessoas))
   };
-
-  cidade(){
-    return this.cidade
-  }
 
   pessoa_mais_velha(){
     var maior_idade = 0;
@@ -54,12 +50,13 @@ export class PessoaService {
     var total = 0;
     let pessoas = JSON.parse(localStorage.getItem("pessoas"));
     for(let pessoa of pessoas){
-      if(pessoa.sexo == 'Feminino'){
+      if(pessoa.sexo == 'feminino'){
         soma += pessoa.idade
         total += 1
       }
     }
-    if (soma/total == null){
+    var resultado = soma/total
+    if(!resultado){
       return 0
     }
     return soma/total
@@ -70,10 +67,14 @@ export class PessoaService {
     var total = 0;
     let pessoas = JSON.parse(localStorage.getItem("pessoas"))
     for(let pessoa of pessoas){
-      if(pessoa.sexo == 'Masculino'){
+      if(pessoa.sexo == 'masculino'){
         soma += pessoa.idade
         total += 1
       }
+    }
+    var resultado = soma/total
+    if(!resultado){
+      return 0
     }
     return soma/total
   }
@@ -88,6 +89,10 @@ export class PessoaService {
         total += 1
       }
     }
+    var resultado = soma/total
+    if(!resultado){
+      return 0
+    }
     return soma/total
   }
 
@@ -98,7 +103,7 @@ export class PessoaService {
     let pessoas = JSON.parse(localStorage.getItem("pessoas"))
     for(let pessoa of pessoas){
       if(pessoa.cidade == cidade){
-        if(pessoa.sexo == 'F'){
+        if(pessoa.sexo == 'feminino'){
           fem += 1
         }else{
           masc += 1
@@ -106,6 +111,16 @@ export class PessoaService {
         total += 1
       }
     }
-    return 'Feminino:'+fem/total*100+'%'+' Masculino:'+masc/total*100+'%'
+    var Pfem = fem/total*100
+    var Pmasc = masc/total*100
+    if(!Pfem && !Pmasc){
+      return 'Feminino:'+0+'%'+' Masculino:'+0+'%' 
+    }else if(!Pmasc){
+      return 'Feminino:'+Pfem+'%'+' Masculino:'+0+'%'
+    }else if(!Pfem){
+      return 'Feminino:'+0+'%'+' Masculino:'+Pmasc+'%'
+    }else{
+      return 'Feminino:'+Pfem+'%'+' Masculino:'+Pmasc+'%'
+    }
   }
 }

@@ -15,9 +15,13 @@ export class AppComponent {
 
   constructor(private Pessoas : PessoaService){}
 
-  salvar(form) {
+  salvar() {
      this.Pessoas.salvar(this.nome, this.sexo, this.idade, this.cidade);
-     form.reset();
+
+    this.nome = null;
+    this.sexo = null;
+    this.idade = null;
+    this.cidade = null;
     }
 
   
